@@ -1,0 +1,1836 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="CustomerPortalService" targetNamespace="http://tempuri.org/">
+<wsp:Policy wsu:Id="GCCustomerPortalService_Custom_policy">
+<wsp:ExactlyOne>
+<wsp:All>
+<msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1"/>
+<wsaw:UsingAddressing/>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsdl:types>
+<xsd:schema targetNamespace="http://tempuri.org/Imports">
+<xsd:import schemaLocation="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc?xsd=xsd0" namespace="http://tempuri.org/"/>
+<xsd:import schemaLocation="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+<xsd:import schemaLocation="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GCCustomerPortalBL"/>
+<xsd:import schemaLocation="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Text"/>
+<xsd:import schemaLocation="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DbUtility"/>
+<xsd:import schemaLocation="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+<xsd:import schemaLocation="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/BridgeWrapperBL"/>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="ICustomerPortalService_Authenticate_InputMessage">
+<wsdl:part name="parameters" element="tns:Authenticate"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_Authenticate_OutputMessage">
+<wsdl:part name="parameters" element="tns:AuthenticateResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetUserRole_InputMessage">
+<wsdl:part name="parameters" element="tns:GetUserRole"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetUserRole_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetUserRoleResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_IsAuthenticatedUser_InputMessage">
+<wsdl:part name="parameters" element="tns:IsAuthenticatedUser"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_IsAuthenticatedUser_OutputMessage">
+<wsdl:part name="parameters" element="tns:IsAuthenticatedUserResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculatePremium_InputMessage">
+<wsdl:part name="parameters" element="tns:CalculatePremium"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculatePremium_OutputMessage">
+<wsdl:part name="parameters" element="tns:CalculatePremiumResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveProposal_InputMessage">
+<wsdl:part name="parameters" element="tns:SaveProposal"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveProposal_OutputMessage">
+<wsdl:part name="parameters" element="tns:SaveProposalResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetHtmlReport_InputMessage">
+<wsdl:part name="parameters" element="tns:GetHtmlReport"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetHtmlReport_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetHtmlReportResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetProposalData_InputMessage">
+<wsdl:part name="parameters" element="tns:GetProposalData"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetProposalData_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetProposalDataResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_AddCustomer_InputMessage">
+<wsdl:part name="parameters" element="tns:AddCustomer"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_AddCustomer_OutputMessage">
+<wsdl:part name="parameters" element="tns:AddCustomerResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_EditCustomer_InputMessage">
+<wsdl:part name="parameters" element="tns:EditCustomer"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_EditCustomer_OutputMessage">
+<wsdl:part name="parameters" element="tns:EditCustomerResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ViewCustomer_InputMessage">
+<wsdl:part name="parameters" element="tns:ViewCustomer"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ViewCustomer_OutputMessage">
+<wsdl:part name="parameters" element="tns:ViewCustomerResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GeneratePaymentReceipt_InputMessage">
+<wsdl:part name="parameters" element="tns:GeneratePaymentReceipt"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GeneratePaymentReceipt_OutputMessage">
+<wsdl:part name="parameters" element="tns:GeneratePaymentReceiptResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PolicyRenewal_GetData_InputMessage">
+<wsdl:part name="parameters" element="tns:PolicyRenewal_GetData"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PolicyRenewal_GetData_OutputMessage">
+<wsdl:part name="parameters" element="tns:PolicyRenewal_GetDataResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PolicyRenewal_SaveData_InputMessage">
+<wsdl:part name="parameters" element="tns:PolicyRenewal_SaveData"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PolicyRenewal_SaveData_OutputMessage">
+<wsdl:part name="parameters" element="tns:PolicyRenewal_SaveDataResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PolicyRenewal_SaveDataWithoutModification_InputMessage">
+<wsdl:part name="parameters" element="tns:PolicyRenewal_SaveDataWithoutModification"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PolicyRenewal_SaveDataWithoutModification_OutputMessage">
+<wsdl:part name="parameters" element="tns:PolicyRenewal_SaveDataWithoutModificationResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CaculateRenewalPremium_InputMessage">
+<wsdl:part name="parameters" element="tns:CaculateRenewalPremium"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CaculateRenewalPremium_OutputMessage">
+<wsdl:part name="parameters" element="tns:CaculateRenewalPremiumResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_FetchProposalXml_InputMessage">
+<wsdl:part name="parameters" element="tns:FetchProposalXml"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_FetchProposalXml_OutputMessage">
+<wsdl:part name="parameters" element="tns:FetchProposalXmlResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ProposalCancellation_InputMessage">
+<wsdl:part name="parameters" element="tns:ProposalCancellation"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ProposalCancellation_OutputMessage">
+<wsdl:part name="parameters" element="tns:ProposalCancellationResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_FetchQuotationXml_InputMessage">
+<wsdl:part name="parameters" element="tns:FetchQuotationXml"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_FetchQuotationXml_OutputMessage">
+<wsdl:part name="parameters" element="tns:FetchQuotationXmlResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetPolicyScheduleForPortal_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyScheduleForPortal"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetPolicyScheduleForPortal_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyScheduleForPortalResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetECoverNoteForPortal_InputMessage">
+<wsdl:part name="parameters" element="tns:GetECoverNoteForPortal"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetECoverNoteForPortal_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetECoverNoteForPortalResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetPolicyRenewalMinimumData_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyRenewalMinimumData"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetPolicyRenewalMinimumData_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyRenewalMinimumDataResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetWorkSheet_InputMessage">
+<wsdl:part name="parameters" element="tns:GetWorkSheet"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetWorkSheet_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetWorkSheetResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetRenewalNoticeHtml_InputMessage">
+<wsdl:part name="parameters" element="tns:GetRenewalNoticeHtml"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetRenewalNoticeHtml_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetRenewalNoticeHtmlResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveVehicleInspection_InputMessage">
+<wsdl:part name="parameters" element="tns:SaveVehicleInspection"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveVehicleInspection_OutputMessage">
+<wsdl:part name="parameters" element="tns:SaveVehicleInspectionResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_UploadFile_InputMessage">
+<wsdl:part name="parameters" element="tns:UploadFile"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_UploadFile_OutputMessage">
+<wsdl:part name="parameters" element="tns:UploadFileResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetWorkSheetForPortal_InputMessage">
+<wsdl:part name="parameters" element="tns:GetWorkSheetForPortal"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetWorkSheetForPortal_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetWorkSheetForPortalResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetRenwalNoticeForPortal_InputMessage">
+<wsdl:part name="parameters" element="tns:GetRenwalNoticeForPortal"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetRenwalNoticeForPortal_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetRenwalNoticeForPortalResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetRenwalRejectionForPortal_InputMessage">
+<wsdl:part name="parameters" element="tns:GetRenwalRejectionForPortal"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetRenwalRejectionForPortal_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetRenwalRejectionForPortalResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_UploadClaimFile_InputMessage">
+<wsdl:part name="parameters" element="tns:UploadClaimFile"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_UploadClaimFile_OutputMessage">
+<wsdl:part name="parameters" element="tns:UploadClaimFileResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveDeatailQuote_InputMessage">
+<wsdl:part name="parameters" element="tns:SaveDeatailQuote"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveDeatailQuote_OutputMessage">
+<wsdl:part name="parameters" element="tns:SaveDeatailQuoteResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ViewPolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:ViewPolicy"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ViewPolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:ViewPolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetDataForNilEndorsement_InputMessage">
+<wsdl:part name="parameters" element="tns:GetDataForNilEndorsement"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetDataForNilEndorsement_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetDataForNilEndorsementResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateNilEndorsement_InputMessage">
+<wsdl:part name="parameters" element="tns:CreateNilEndorsement"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateNilEndorsement_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreateNilEndorsementResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetDataForNonNilEndorsement_InputMessage">
+<wsdl:part name="parameters" element="tns:GetDataForNonNilEndorsement"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetDataForNonNilEndorsement_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetDataForNonNilEndorsementResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateNonNilEndorsement_InputMessage">
+<wsdl:part name="parameters" element="tns:CreateNonNilEndorsement"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateNonNilEndorsement_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreateNonNilEndorsementResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetDataForCancellationEndorsement_InputMessage">
+<wsdl:part name="parameters" element="tns:GetDataForCancellationEndorsement"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetDataForCancellationEndorsement_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetDataForCancellationEndorsementResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateCancellationEndorsement_InputMessage">
+<wsdl:part name="parameters" element="tns:CreateCancellationEndorsement"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateCancellationEndorsement_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreateCancellationEndorsementResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateEndorsementPremium_InputMessage">
+<wsdl:part name="parameters" element="tns:CalculateEndorsementPremium"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateEndorsementPremium_OutputMessage">
+<wsdl:part name="parameters" element="tns:CalculateEndorsementPremiumResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ConvertICNToPolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:ConvertICNToPolicy"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ConvertICNToPolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:ConvertICNToPolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_QuickQuote_InputMessage">
+<wsdl:part name="parameters" element="tns:QuickQuote"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_QuickQuote_OutputMessage">
+<wsdl:part name="parameters" element="tns:QuickQuoteResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateQuote_InputMessage">
+<wsdl:part name="parameters" element="tns:CreateQuote"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreateQuote_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreateQuoteResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ModifyQuote_InputMessage">
+<wsdl:part name="parameters" element="tns:ModifyQuote"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_ModifyQuote_OutputMessage">
+<wsdl:part name="parameters" element="tns:ModifyQuoteResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_QuoteToPolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:QuoteToPolicy"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_QuoteToPolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:QuoteToPolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreatePolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:CreatePolicy"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreatePolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreatePolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CancelPolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:CancelPolicy"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CancelPolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:CancelPolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PaymentEntry_InputMessage">
+<wsdl:part name="parameters" element="tns:PaymentEntry"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_PaymentEntry_OutputMessage">
+<wsdl:part name="parameters" element="tns:PaymentEntryResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GeneratePolicySchedulePDF_InputMessage">
+<wsdl:part name="parameters" element="tns:GeneratePolicySchedulePDF"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GeneratePolicySchedulePDF_OutputMessage">
+<wsdl:part name="parameters" element="tns:GeneratePolicySchedulePDFResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreatePolicyXml_InputMessage">
+<wsdl:part name="parameters" element="tns:CreatePolicyXml"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CreatePolicyXml_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreatePolicyXmlResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CancelProposal_InputMessage">
+<wsdl:part name="parameters" element="tns:CancelProposal"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CancelProposal_OutputMessage">
+<wsdl:part name="parameters" element="tns:CancelProposalResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_QuickEndorsement_InputMessage">
+<wsdl:part name="parameters" element="tns:QuickEndorsement"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_QuickEndorsement_OutputMessage">
+<wsdl:part name="parameters" element="tns:QuickEndorsementResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CancelDeclarationCertificate_InputMessage">
+<wsdl:part name="parameters" element="tns:CancelDeclarationCertificate"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CancelDeclarationCertificate_OutputMessage">
+<wsdl:part name="parameters" element="tns:CancelDeclarationCertificateResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_FetchMultiBlockProposalXml_InputMessage">
+<wsdl:part name="parameters" element="tns:FetchMultiBlockProposalXml"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_FetchMultiBlockProposalXml_OutputMessage">
+<wsdl:part name="parameters" element="tns:FetchMultiBlockProposalXmlResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateMultiBlockPremium_InputMessage">
+<wsdl:part name="parameters" element="tns:CalculateMultiBlockPremium"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateMultiBlockPremium_OutputMessage">
+<wsdl:part name="parameters" element="tns:CalculateMultiBlockPremiumResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveProposalMultiBlock_InputMessage">
+<wsdl:part name="parameters" element="tns:SaveProposalMultiBlock"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveProposalMultiBlock_OutputMessage">
+<wsdl:part name="parameters" element="tns:SaveProposalMultiBlockResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateBlockWisePremium_InputMessage">
+<wsdl:part name="parameters" element="tns:CalculateBlockWisePremium"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateBlockWisePremium_OutputMessage">
+<wsdl:part name="parameters" element="tns:CalculateBlockWisePremiumResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateMultiBlockRenewalPremium_InputMessage">
+<wsdl:part name="parameters" element="tns:CalculateMultiBlockRenewalPremium"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_CalculateMultiBlockRenewalPremium_OutputMessage">
+<wsdl:part name="parameters" element="tns:CalculateMultiBlockRenewalPremiumResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveRenewalProposalMultiBlock_InputMessage">
+<wsdl:part name="parameters" element="tns:SaveRenewalProposalMultiBlock"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SaveRenewalProposalMultiBlock_OutputMessage">
+<wsdl:part name="parameters" element="tns:SaveRenewalProposalMultiBlockResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetLatestPolicyNumber_InputMessage">
+<wsdl:part name="parameters" element="tns:GetLatestPolicyNumber"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetLatestPolicyNumber_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetLatestPolicyNumberResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetTaxDetails_InputMessage">
+<wsdl:part name="parameters" element="tns:GetTaxDetails"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetTaxDetails_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetTaxDetailsResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetUpdatedPolicyNoAfterQC_InputMessage">
+<wsdl:part name="parameters" element="tns:GetUpdatedPolicyNoAfterQC"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetUpdatedPolicyNoAfterQC_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetUpdatedPolicyNoAfterQCResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetPolicyNoPI_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyNoPI"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetPolicyNoPI_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyNoPIResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetSearchView_InputMessage">
+<wsdl:part name="parameters" element="tns:GetSearchView"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetSearchView_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetSearchViewResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SetPolicyEndorsementStatus_InputMessage">
+<wsdl:part name="parameters" element="tns:SetPolicyEndorsementStatus"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_SetPolicyEndorsementStatus_OutputMessage">
+<wsdl:part name="parameters" element="tns:SetPolicyEndorsementStatusResponse"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetClaimCount_InputMessage">
+<wsdl:part name="parameters" element="tns:GetClaimCount"/>
+</wsdl:message>
+<wsdl:message name="ICustomerPortalService_GetClaimCount_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetClaimCountResponse"/>
+</wsdl:message>
+<wsdl:portType name="ICustomerPortalService">
+<wsdl:operation name="Authenticate">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/Authenticate" message="tns:ICustomerPortalService_Authenticate_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/AuthenticateResponse" message="tns:ICustomerPortalService_Authenticate_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetUserRole">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetUserRole" message="tns:ICustomerPortalService_GetUserRole_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetUserRoleResponse" message="tns:ICustomerPortalService_GetUserRole_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="IsAuthenticatedUser">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/IsAuthenticatedUser" message="tns:ICustomerPortalService_IsAuthenticatedUser_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/IsAuthenticatedUserResponse" message="tns:ICustomerPortalService_IsAuthenticatedUser_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CalculatePremium">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculatePremium" message="tns:ICustomerPortalService_CalculatePremium_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculatePremiumResponse" message="tns:ICustomerPortalService_CalculatePremium_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="SaveProposal">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveProposal" message="tns:ICustomerPortalService_SaveProposal_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveProposalResponse" message="tns:ICustomerPortalService_SaveProposal_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetHtmlReport">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetHtmlReport" message="tns:ICustomerPortalService_GetHtmlReport_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetHtmlReportResponse" message="tns:ICustomerPortalService_GetHtmlReport_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetProposalData">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetProposalData" message="tns:ICustomerPortalService_GetProposalData_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetProposalDataResponse" message="tns:ICustomerPortalService_GetProposalData_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="AddCustomer">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/AddCustomer" message="tns:ICustomerPortalService_AddCustomer_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/AddCustomerResponse" message="tns:ICustomerPortalService_AddCustomer_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="EditCustomer">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/EditCustomer" message="tns:ICustomerPortalService_EditCustomer_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/EditCustomerResponse" message="tns:ICustomerPortalService_EditCustomer_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ViewCustomer">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/ViewCustomer" message="tns:ICustomerPortalService_ViewCustomer_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/ViewCustomerResponse" message="tns:ICustomerPortalService_ViewCustomer_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GeneratePaymentReceipt">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GeneratePaymentReceipt" message="tns:ICustomerPortalService_GeneratePaymentReceipt_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GeneratePaymentReceiptResponse" message="tns:ICustomerPortalService_GeneratePaymentReceipt_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_GetData">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/PolicyRenewal_GetData" message="tns:ICustomerPortalService_PolicyRenewal_GetData_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/PolicyRenewal_GetDataResponse" message="tns:ICustomerPortalService_PolicyRenewal_GetData_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_SaveData">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveData" message="tns:ICustomerPortalService_PolicyRenewal_SaveData_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveDataResponse" message="tns:ICustomerPortalService_PolicyRenewal_SaveData_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_SaveDataWithoutModification">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveDataWithoutModification" message="tns:ICustomerPortalService_PolicyRenewal_SaveDataWithoutModification_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveDataWithoutModificationResponse" message="tns:ICustomerPortalService_PolicyRenewal_SaveDataWithoutModification_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CaculateRenewalPremium">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CaculateRenewalPremium" message="tns:ICustomerPortalService_CaculateRenewalPremium_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CaculateRenewalPremiumResponse" message="tns:ICustomerPortalService_CaculateRenewalPremium_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="FetchProposalXml">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/FetchProposalXml" message="tns:ICustomerPortalService_FetchProposalXml_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/FetchProposalXmlResponse" message="tns:ICustomerPortalService_FetchProposalXml_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ProposalCancellation">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/ProposalCancellation" message="tns:ICustomerPortalService_ProposalCancellation_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/ProposalCancellationResponse" message="tns:ICustomerPortalService_ProposalCancellation_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="FetchQuotationXml">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/FetchQuotationXml" message="tns:ICustomerPortalService_FetchQuotationXml_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/FetchQuotationXmlResponse" message="tns:ICustomerPortalService_FetchQuotationXml_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyScheduleForPortal">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetPolicyScheduleForPortal" message="tns:ICustomerPortalService_GetPolicyScheduleForPortal_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetPolicyScheduleForPortalResponse" message="tns:ICustomerPortalService_GetPolicyScheduleForPortal_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetECoverNoteForPortal">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetECoverNoteForPortal" message="tns:ICustomerPortalService_GetECoverNoteForPortal_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetECoverNoteForPortalResponse" message="tns:ICustomerPortalService_GetECoverNoteForPortal_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyRenewalMinimumData">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetPolicyRenewalMinimumData" message="tns:ICustomerPortalService_GetPolicyRenewalMinimumData_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetPolicyRenewalMinimumDataResponse" message="tns:ICustomerPortalService_GetPolicyRenewalMinimumData_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetWorkSheet">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetWorkSheet" message="tns:ICustomerPortalService_GetWorkSheet_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetWorkSheetResponse" message="tns:ICustomerPortalService_GetWorkSheet_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetRenewalNoticeHtml">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetRenewalNoticeHtml" message="tns:ICustomerPortalService_GetRenewalNoticeHtml_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetRenewalNoticeHtmlResponse" message="tns:ICustomerPortalService_GetRenewalNoticeHtml_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="SaveVehicleInspection">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveVehicleInspection" message="tns:ICustomerPortalService_SaveVehicleInspection_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveVehicleInspectionResponse" message="tns:ICustomerPortalService_SaveVehicleInspection_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="UploadFile">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/UploadFile" message="tns:ICustomerPortalService_UploadFile_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/UploadFileResponse" message="tns:ICustomerPortalService_UploadFile_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetWorkSheetForPortal">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetWorkSheetForPortal" message="tns:ICustomerPortalService_GetWorkSheetForPortal_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetWorkSheetForPortalResponse" message="tns:ICustomerPortalService_GetWorkSheetForPortal_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetRenwalNoticeForPortal">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetRenwalNoticeForPortal" message="tns:ICustomerPortalService_GetRenwalNoticeForPortal_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetRenwalNoticeForPortalResponse" message="tns:ICustomerPortalService_GetRenwalNoticeForPortal_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetRenwalRejectionForPortal">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetRenwalRejectionForPortal" message="tns:ICustomerPortalService_GetRenwalRejectionForPortal_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetRenwalRejectionForPortalResponse" message="tns:ICustomerPortalService_GetRenwalRejectionForPortal_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="UploadClaimFile">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/UploadClaimFile" message="tns:ICustomerPortalService_UploadClaimFile_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/UploadClaimFileResponse" message="tns:ICustomerPortalService_UploadClaimFile_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="SaveDeatailQuote">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveDeatailQuote" message="tns:ICustomerPortalService_SaveDeatailQuote_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveDeatailQuoteResponse" message="tns:ICustomerPortalService_SaveDeatailQuote_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ViewPolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/ViewPolicy" message="tns:ICustomerPortalService_ViewPolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/ViewPolicyResponse" message="tns:ICustomerPortalService_ViewPolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetDataForNilEndorsement">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetDataForNilEndorsement" message="tns:ICustomerPortalService_GetDataForNilEndorsement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetDataForNilEndorsementResponse" message="tns:ICustomerPortalService_GetDataForNilEndorsement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreateNilEndorsement">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateNilEndorsement" message="tns:ICustomerPortalService_CreateNilEndorsement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateNilEndorsementResponse" message="tns:ICustomerPortalService_CreateNilEndorsement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetDataForNonNilEndorsement">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetDataForNonNilEndorsement" message="tns:ICustomerPortalService_GetDataForNonNilEndorsement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetDataForNonNilEndorsementResponse" message="tns:ICustomerPortalService_GetDataForNonNilEndorsement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreateNonNilEndorsement">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateNonNilEndorsement" message="tns:ICustomerPortalService_CreateNonNilEndorsement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateNonNilEndorsementResponse" message="tns:ICustomerPortalService_CreateNonNilEndorsement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetDataForCancellationEndorsement">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetDataForCancellationEndorsement" message="tns:ICustomerPortalService_GetDataForCancellationEndorsement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetDataForCancellationEndorsementResponse" message="tns:ICustomerPortalService_GetDataForCancellationEndorsement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreateCancellationEndorsement">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateCancellationEndorsement" message="tns:ICustomerPortalService_CreateCancellationEndorsement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateCancellationEndorsementResponse" message="tns:ICustomerPortalService_CreateCancellationEndorsement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CalculateEndorsementPremium">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateEndorsementPremium" message="tns:ICustomerPortalService_CalculateEndorsementPremium_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateEndorsementPremiumResponse" message="tns:ICustomerPortalService_CalculateEndorsementPremium_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ConvertICNToPolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/ConvertICNToPolicy" message="tns:ICustomerPortalService_ConvertICNToPolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/ConvertICNToPolicyResponse" message="tns:ICustomerPortalService_ConvertICNToPolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="QuickQuote">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/QuickQuote" message="tns:ICustomerPortalService_QuickQuote_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/QuickQuoteResponse" message="tns:ICustomerPortalService_QuickQuote_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreateQuote">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateQuote" message="tns:ICustomerPortalService_CreateQuote_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CreateQuoteResponse" message="tns:ICustomerPortalService_CreateQuote_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ModifyQuote">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/ModifyQuote" message="tns:ICustomerPortalService_ModifyQuote_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/ModifyQuoteResponse" message="tns:ICustomerPortalService_ModifyQuote_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="QuoteToPolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/QuoteToPolicy" message="tns:ICustomerPortalService_QuoteToPolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/QuoteToPolicyResponse" message="tns:ICustomerPortalService_QuoteToPolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CreatePolicy" message="tns:ICustomerPortalService_CreatePolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CreatePolicyResponse" message="tns:ICustomerPortalService_CreatePolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CancelPolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CancelPolicy" message="tns:ICustomerPortalService_CancelPolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CancelPolicyResponse" message="tns:ICustomerPortalService_CancelPolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="PaymentEntry">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/PaymentEntry" message="tns:ICustomerPortalService_PaymentEntry_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/PaymentEntryResponse" message="tns:ICustomerPortalService_PaymentEntry_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GeneratePolicySchedulePDF">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GeneratePolicySchedulePDF" message="tns:ICustomerPortalService_GeneratePolicySchedulePDF_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GeneratePolicySchedulePDFResponse" message="tns:ICustomerPortalService_GeneratePolicySchedulePDF_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicyXml">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CreatePolicyXml" message="tns:ICustomerPortalService_CreatePolicyXml_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CreatePolicyXmlResponse" message="tns:ICustomerPortalService_CreatePolicyXml_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CancelProposal">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CancelProposal" message="tns:ICustomerPortalService_CancelProposal_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CancelProposalResponse" message="tns:ICustomerPortalService_CancelProposal_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="QuickEndorsement">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/QuickEndorsement" message="tns:ICustomerPortalService_QuickEndorsement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/QuickEndorsementResponse" message="tns:ICustomerPortalService_QuickEndorsement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CancelDeclarationCertificate">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CancelDeclarationCertificate" message="tns:ICustomerPortalService_CancelDeclarationCertificate_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CancelDeclarationCertificateResponse" message="tns:ICustomerPortalService_CancelDeclarationCertificate_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="FetchMultiBlockProposalXml">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/FetchMultiBlockProposalXml" message="tns:ICustomerPortalService_FetchMultiBlockProposalXml_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/FetchMultiBlockProposalXmlResponse" message="tns:ICustomerPortalService_FetchMultiBlockProposalXml_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CalculateMultiBlockPremium">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockPremium" message="tns:ICustomerPortalService_CalculateMultiBlockPremium_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockPremiumResponse" message="tns:ICustomerPortalService_CalculateMultiBlockPremium_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="SaveProposalMultiBlock">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveProposalMultiBlock" message="tns:ICustomerPortalService_SaveProposalMultiBlock_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveProposalMultiBlockResponse" message="tns:ICustomerPortalService_SaveProposalMultiBlock_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CalculateBlockWisePremium">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateBlockWisePremium" message="tns:ICustomerPortalService_CalculateBlockWisePremium_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateBlockWisePremiumResponse" message="tns:ICustomerPortalService_CalculateBlockWisePremium_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CalculateMultiBlockRenewalPremium">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockRenewalPremium" message="tns:ICustomerPortalService_CalculateMultiBlockRenewalPremium_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockRenewalPremiumResponse" message="tns:ICustomerPortalService_CalculateMultiBlockRenewalPremium_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="SaveRenewalProposalMultiBlock">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveRenewalProposalMultiBlock" message="tns:ICustomerPortalService_SaveRenewalProposalMultiBlock_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/SaveRenewalProposalMultiBlockResponse" message="tns:ICustomerPortalService_SaveRenewalProposalMultiBlock_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetLatestPolicyNumber">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetLatestPolicyNumber" message="tns:ICustomerPortalService_GetLatestPolicyNumber_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetLatestPolicyNumberResponse" message="tns:ICustomerPortalService_GetLatestPolicyNumber_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetTaxDetails">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetTaxDetails" message="tns:ICustomerPortalService_GetTaxDetails_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetTaxDetailsResponse" message="tns:ICustomerPortalService_GetTaxDetails_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetUpdatedPolicyNoAfterQC">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetUpdatedPolicyNoAfterQC" message="tns:ICustomerPortalService_GetUpdatedPolicyNoAfterQC_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetUpdatedPolicyNoAfterQCResponse" message="tns:ICustomerPortalService_GetUpdatedPolicyNoAfterQC_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyNoPI">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetPolicyNoPI" message="tns:ICustomerPortalService_GetPolicyNoPI_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetPolicyNoPIResponse" message="tns:ICustomerPortalService_GetPolicyNoPI_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetSearchView">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetSearchView" message="tns:ICustomerPortalService_GetSearchView_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetSearchViewResponse" message="tns:ICustomerPortalService_GetSearchView_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="SetPolicyEndorsementStatus">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/SetPolicyEndorsementStatus" message="tns:ICustomerPortalService_SetPolicyEndorsementStatus_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/SetPolicyEndorsementStatusResponse" message="tns:ICustomerPortalService_SetPolicyEndorsementStatus_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetClaimCount">
+<wsdl:input wsaw:Action="http://tempuri.org/ICustomerPortalService/GetClaimCount" message="tns:ICustomerPortalService_GetClaimCount_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ICustomerPortalService/GetClaimCountResponse" message="tns:ICustomerPortalService_GetClaimCount_OutputMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="GCCustomerPortalService_Custom" type="tns:ICustomerPortalService">
+<wsp:PolicyReference URI="#GCCustomerPortalService_Custom_policy"/>
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Authenticate">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/Authenticate" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetUserRole">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetUserRole" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IsAuthenticatedUser">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/IsAuthenticatedUser" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculatePremium">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculatePremium" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveProposal">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveProposal" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetHtmlReport">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetHtmlReport" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetProposalData">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetProposalData" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AddCustomer">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/AddCustomer" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EditCustomer">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/EditCustomer" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ViewCustomer">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/ViewCustomer" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GeneratePaymentReceipt">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GeneratePaymentReceipt" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_GetData">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/PolicyRenewal_GetData" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_SaveData">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveData" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_SaveDataWithoutModification">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveDataWithoutModification" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CaculateRenewalPremium">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CaculateRenewalPremium" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="FetchProposalXml">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/FetchProposalXml" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ProposalCancellation">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/ProposalCancellation" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="FetchQuotationXml">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/FetchQuotationXml" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyScheduleForPortal">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetPolicyScheduleForPortal" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetECoverNoteForPortal">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetECoverNoteForPortal" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyRenewalMinimumData">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetPolicyRenewalMinimumData" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetWorkSheet">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetWorkSheet" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetRenewalNoticeHtml">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetRenewalNoticeHtml" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveVehicleInspection">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveVehicleInspection" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UploadFile">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/UploadFile" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetWorkSheetForPortal">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetWorkSheetForPortal" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetRenwalNoticeForPortal">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetRenwalNoticeForPortal" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetRenwalRejectionForPortal">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetRenwalRejectionForPortal" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UploadClaimFile">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/UploadClaimFile" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveDeatailQuote">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveDeatailQuote" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ViewPolicy">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/ViewPolicy" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetDataForNilEndorsement">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetDataForNilEndorsement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateNilEndorsement">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateNilEndorsement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetDataForNonNilEndorsement">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetDataForNonNilEndorsement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateNonNilEndorsement">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateNonNilEndorsement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetDataForCancellationEndorsement">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetDataForCancellationEndorsement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateCancellationEndorsement">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateCancellationEndorsement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateEndorsementPremium">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateEndorsementPremium" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ConvertICNToPolicy">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/ConvertICNToPolicy" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="QuickQuote">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/QuickQuote" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateQuote">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateQuote" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ModifyQuote">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/ModifyQuote" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="QuoteToPolicy">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/QuoteToPolicy" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicy">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CreatePolicy" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CancelPolicy">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CancelPolicy" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PaymentEntry">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/PaymentEntry" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GeneratePolicySchedulePDF">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GeneratePolicySchedulePDF" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicyXml">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CreatePolicyXml" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CancelProposal">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CancelProposal" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="QuickEndorsement">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/QuickEndorsement" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CancelDeclarationCertificate">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CancelDeclarationCertificate" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="FetchMultiBlockProposalXml">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/FetchMultiBlockProposalXml" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateMultiBlockPremium">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockPremium" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveProposalMultiBlock">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveProposalMultiBlock" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateBlockWisePremium">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateBlockWisePremium" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateMultiBlockRenewalPremium">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockRenewalPremium" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveRenewalProposalMultiBlock">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveRenewalProposalMultiBlock" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetLatestPolicyNumber">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetLatestPolicyNumber" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetTaxDetails">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetTaxDetails" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetUpdatedPolicyNoAfterQC">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetUpdatedPolicyNoAfterQC" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyNoPI">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetPolicyNoPI" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetSearchView">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetSearchView" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SetPolicyEndorsementStatus">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/SetPolicyEndorsementStatus" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetClaimCount">
+<soap12:operation soapAction="http://tempuri.org/ICustomerPortalService/GetClaimCount" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="BasicHttpBinding_ICustomerPortalService" type="tns:ICustomerPortalService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Authenticate">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/Authenticate" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetUserRole">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetUserRole" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IsAuthenticatedUser">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/IsAuthenticatedUser" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculatePremium">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculatePremium" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveProposal">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveProposal" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetHtmlReport">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetHtmlReport" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetProposalData">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetProposalData" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AddCustomer">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/AddCustomer" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EditCustomer">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/EditCustomer" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ViewCustomer">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/ViewCustomer" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GeneratePaymentReceipt">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GeneratePaymentReceipt" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_GetData">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/PolicyRenewal_GetData" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_SaveData">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveData" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyRenewal_SaveDataWithoutModification">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/PolicyRenewal_SaveDataWithoutModification" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CaculateRenewalPremium">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CaculateRenewalPremium" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="FetchProposalXml">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/FetchProposalXml" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ProposalCancellation">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/ProposalCancellation" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="FetchQuotationXml">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/FetchQuotationXml" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyScheduleForPortal">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetPolicyScheduleForPortal" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetECoverNoteForPortal">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetECoverNoteForPortal" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyRenewalMinimumData">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetPolicyRenewalMinimumData" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetWorkSheet">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetWorkSheet" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetRenewalNoticeHtml">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetRenewalNoticeHtml" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveVehicleInspection">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveVehicleInspection" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UploadFile">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/UploadFile" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetWorkSheetForPortal">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetWorkSheetForPortal" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetRenwalNoticeForPortal">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetRenwalNoticeForPortal" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetRenwalRejectionForPortal">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetRenwalRejectionForPortal" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UploadClaimFile">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/UploadClaimFile" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveDeatailQuote">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveDeatailQuote" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ViewPolicy">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/ViewPolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetDataForNilEndorsement">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetDataForNilEndorsement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateNilEndorsement">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateNilEndorsement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetDataForNonNilEndorsement">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetDataForNonNilEndorsement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateNonNilEndorsement">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateNonNilEndorsement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetDataForCancellationEndorsement">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetDataForCancellationEndorsement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateCancellationEndorsement">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateCancellationEndorsement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateEndorsementPremium">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateEndorsementPremium" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ConvertICNToPolicy">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/ConvertICNToPolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="QuickQuote">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/QuickQuote" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateQuote">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CreateQuote" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ModifyQuote">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/ModifyQuote" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="QuoteToPolicy">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/QuoteToPolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicy">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CreatePolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CancelPolicy">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CancelPolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PaymentEntry">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/PaymentEntry" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GeneratePolicySchedulePDF">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GeneratePolicySchedulePDF" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicyXml">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CreatePolicyXml" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CancelProposal">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CancelProposal" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="QuickEndorsement">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/QuickEndorsement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CancelDeclarationCertificate">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CancelDeclarationCertificate" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="FetchMultiBlockProposalXml">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/FetchMultiBlockProposalXml" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateMultiBlockPremium">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockPremium" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveProposalMultiBlock">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveProposalMultiBlock" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateBlockWisePremium">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateBlockWisePremium" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CalculateMultiBlockRenewalPremium">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/CalculateMultiBlockRenewalPremium" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SaveRenewalProposalMultiBlock">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/SaveRenewalProposalMultiBlock" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetLatestPolicyNumber">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetLatestPolicyNumber" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetTaxDetails">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetTaxDetails" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetUpdatedPolicyNoAfterQC">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetUpdatedPolicyNoAfterQC" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyNoPI">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetPolicyNoPI" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetSearchView">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetSearchView" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SetPolicyEndorsementStatus">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/SetPolicyEndorsementStatus" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetClaimCount">
+<soap:operation soapAction="http://tempuri.org/ICustomerPortalService/GetClaimCount" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="CustomerPortalService">
+<wsdl:port name="GCCustomerPortalService_Custom" binding="tns:GCCustomerPortalService_Custom">
+<soap12:address location="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc/Custom"/>
+<wsa10:EndpointReference>
+<wsa10:Address>http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc/Custom</wsa10:Address>
+<Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+<Dns>localhost</Dns>
+</Identity>
+</wsa10:EndpointReference>
+</wsdl:port>
+<wsdl:port name="BasicHttpBinding_ICustomerPortalService" binding="tns:BasicHttpBinding_ICustomerPortalService">
+<soap:address location="http://vwaipin-gcadev1.lgi.libertyinsurance.in/GCCustomerPortalService/CustomerPortalService.svc"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
